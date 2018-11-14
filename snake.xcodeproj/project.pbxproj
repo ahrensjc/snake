@@ -15,6 +15,7 @@
 		BE711B4B219B9AF5003B00E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE711B49219B9AF5003B00E9 /* Main.storyboard */; };
 		BE711B4D219B9AF8003B00E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE711B4C219B9AF8003B00E9 /* Assets.xcassets */; };
 		BE711B50219B9AF8003B00E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE711B4E219B9AF8003B00E9 /* LaunchScreen.storyboard */; };
+		BE711B58219BAFA3003B00E9 /* ScoreSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE711B57219BAFA3003B00E9 /* ScoreSingleton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BE711B4C219B9AF8003B00E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE711B4F219B9AF8003B00E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE711B51219B9AF8003B00E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE711B57219BAFA3003B00E9 /* ScoreSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreSingleton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				BE711B45219B9AF5003B00E9 /* GameScene.swift */,
 				BE711B47219B9AF5003B00E9 /* GameViewController.swift */,
 				BE711B49219B9AF5003B00E9 /* Main.storyboard */,
+				BE711B57219BAFA3003B00E9 /* ScoreSingleton.swift */,
 				BE711B4C219B9AF8003B00E9 /* Assets.xcassets */,
 				BE711B4E219B9AF8003B00E9 /* LaunchScreen.storyboard */,
 				BE711B51219B9AF8003B00E9 /* Info.plist */,
@@ -148,6 +151,7 @@
 			files = (
 				BE711B46219B9AF5003B00E9 /* GameScene.swift in Sources */,
 				BE711B48219B9AF5003B00E9 /* GameViewController.swift in Sources */,
+				BE711B58219BAFA3003B00E9 /* ScoreSingleton.swift in Sources */,
 				BE711B40219B9AF5003B00E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
