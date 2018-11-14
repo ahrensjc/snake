@@ -23,11 +23,10 @@ class BoardCell{
     var x: CGFloat = 0.0
     var y: CGFloat = 0.0
     var node: SKShapeNode = SKShapeNode()
+    var isFood: Bool
     
-    init(node: SKShapeNode, x: CGFloat, y: CGFloat){
-        self.x = x
-        self.y = y
-        self.node = node
+    init(){
+        self.isFood = false
     }
 }
 
@@ -35,16 +34,18 @@ class GameScene: SKScene {
     
     var game: GameSceneManager!
     var snakePositions: [SnakePosition] = []
-    var boardArr: [BoardCell] = []
+    var boardArr: [[BoardCell]] = [[BoardCell]]()
     var gameArea: SKShapeNode!
     
     var numRows: Int = 65
     var numCols: Int = 45
     var cellSize: CGFloat = 25.0
     
-    
+    var foodExists: Bool = false
     
     override func didMove(to view: SKView) {
+        
+        fillBoard()
         
         game = GameSceneManager(game: self)
         initializeGame()
@@ -54,16 +55,20 @@ class GameScene: SKScene {
         // Called before each frame is rendered
         
         game.updateBoard(timePassed: currentTime)
+        
+        if !foodExists {
+            game.generateFood()
+        }
     }
     
-    func createCell(size: CGFloat, xPos: CGFloat, yPos: CGFloat, x: CGFloat, y: CGFloat){
-        let cell = SKShapeNode(rectOf: CGSize(width: size, height: size))
-        cell.strokeColor = SKColor.white
-        cell.fillColor = SKColor.darkGray
-        cell.zPosition = 1.0
-        cell.position = CGPoint(x: x, y: y)
-        boardArr.append( BoardCell(node: cell, x: xPos, y: yPos) )
-        gameArea.addChild(cell)
+    func fillBoard(){
+        for _ in 0 ..< numRows {
+            var row = [BoardCell]()
+            for _ in 0 ..< numCols{
+                row.append( BoardCell() )
+            }
+            boardArr.append(row)
+        }
     }
     
     func initializeGame(){
@@ -81,6 +86,7 @@ class GameScene: SKScene {
         createGridLines(width: width, height: height - 180)
         
         self.game.initGame()
+        
     }
     
     func createGridLines(width: CGFloat, height: CGFloat){
@@ -92,9 +98,22 @@ class GameScene: SKScene {
         var x = CGFloat(width / -2) + (w / 2)
         var y = CGFloat(height / 2) - (w / 2)
         
-        for i in 0...r - 1{
-            for j in 0...c - 1{
-                createCell(size: w, xPos: CGFloat(i), yPos: CGFloat(j), x: x, y: y)
+        for i in 0..<r - 1{
+            
+            for j in 0..<c - 1{
+                let cell = SKShapeNode(rectOf: CGSize(width: w, height: w))
+                cell.strokeColor = SKColor.white
+                cell.fillColor = SKColor.darkGray
+                cell.zPosition = 1.0
+                cell.position = CGPoint(x: x, y: y)
+                print("\(i) - \(j)")
+                
+                boardArr[i][j].node = cell
+                boardArr[i][j].x = x
+                boardArr[i][j].y = y
+                
+                gameArea.addChild(cell)
+                
                 x += w
             }
             x = CGFloat(width / -2) + (w / 2)
