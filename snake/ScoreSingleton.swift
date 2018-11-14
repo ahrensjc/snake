@@ -20,10 +20,10 @@ class ScoreSingleton : NSObject {
         let dirUrl = URL(fileURLWithPath: dirPath)
         fileUrl = dirUrl.appendingPathComponent("high_scores.txt")
         
-        //scores["Dev"] = 999
+        /*scores["Dev"] = 999
         //scores.append(["Dev" : 999])
         
-        /*do {
+         do {
          // Convert words into JSON data
          let data = try JSONSerialization.data(withJSONObject: scores, options: .prettyPrinted)
          print(data)
@@ -54,7 +54,7 @@ class ScoreSingleton : NSObject {
             // Write JSON data to file
             try data.write(to: fileUrl)
         } catch {
-            print("error in deinit")
+            print("error adding score")
         }
     }
     

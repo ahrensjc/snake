@@ -52,6 +52,8 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        
+        game.updateBoard(timePassed: currentTime)
     }
     
     func createCell(size: CGFloat, xPos: CGFloat, yPos: CGFloat, x: CGFloat, y: CGFloat){
@@ -77,6 +79,8 @@ class GameScene: SKScene {
         gameArea.isHidden = false
         self.addChild(gameArea)
         createGridLines(width: width, height: height - 180)
+        
+        self.game.initGame()
     }
     
     func createGridLines(width: CGFloat, height: CGFloat){
