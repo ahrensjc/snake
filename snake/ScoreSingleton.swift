@@ -69,6 +69,9 @@ class ScoreSingleton : NSObject {
         } catch {
             print("file load error...")
         }
+        
+        //names.removeAll()
+        //scores.removeAll()
     }
     
     func addScore(name : String, score : Int) {
