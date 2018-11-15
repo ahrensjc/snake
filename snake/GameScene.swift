@@ -17,6 +17,8 @@ class GameScene: SKScene {
     var boardArr: [[BoardCell]] = [[BoardCell]]()
     var gameArea: SKShapeNode!
     
+    var gameScore: Int = 0
+    
     var numRows: Int = 21
     var numCols: Int = 31
     var cellSize: CGFloat = 25.0
@@ -25,7 +27,11 @@ class GameScene: SKScene {
     
     var dead: Bool = false
     
+    var singleton: ScoreSingleton?
+    
     override func didMove(to view: SKView) {
+        
+        singleton = ScoreSingleton.sharedInstance
         
         fillBoard()
         
@@ -38,11 +44,13 @@ class GameScene: SKScene {
         
         game.updateBoard(timePassed: currentTime)
         
-        if game.died(){
+        game.died()
+        
+        if dead {
             for seg in snakePositions{
                 boardArr[seg.x][seg.y].node.fillColor = SKColor.darkGray
             }
-            
+            singleton?.addScore(name: "Billy", score: gameScore)
             
         }
         

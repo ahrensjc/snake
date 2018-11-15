@@ -10,12 +10,11 @@ import Foundation
 
 class ScoreSingleton : NSObject {
     
-    var currentScore: Int = 0
     var scores : [String : Int]
     let fileUrl : URL
     static let sharedInstance = ScoreSingleton()
     
-    private override init() {
+    override init() {
         scores = [String : Int]()
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let dirUrl = URL(fileURLWithPath: dirPath)
