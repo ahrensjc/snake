@@ -10,21 +10,64 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 1-->
+        <!--Instructions-->
         <scene sceneID="RBh-Ry-6Nw">
             <objects>
                 <viewController id="tk4-Zx-UOM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kld-0p-aCf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="- Use tilt of device to control direction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85m-xa-D1L">
+                                <rect key="frame" x="16" y="64" width="411" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALa-dz-dc0">
+                                <rect key="frame" x="16" y="46" width="122" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="122" id="FU4-bF-LTy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="- If the snake collides with itself, you lose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7y-aI-QrZ">
+                                <rect key="frame" x="16" y="117" width="313" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="- Scores are recorded and saved on the Scores tab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EfH-pk-0TX">
+                                <rect key="frame" x="16" y="190" width="389" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="- Try to acquire as many points as possible by hitting the green segments in-game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vm1-HD-aoa">
+                                <rect key="frame" x="16" y="154" width="627" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ALa-dz-dc0" firstAttribute="top" secondItem="fLk-Iz-vgw" secondAttribute="top" constant="26" id="SEK-fb-xZA"/>
+                            <constraint firstItem="ALa-dz-dc0" firstAttribute="leading" secondItem="fLk-Iz-vgw" secondAttribute="leading" constant="16" id="bOE-hg-qUq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fLk-Iz-vgw"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="aew-iZ-xf5"/>
+                    <tabBarItem key="tabBarItem" title="Instructions" id="aew-iZ-xf5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w74-e5-Ytc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130" y="-1212"/>
+            <point key="canvasLocation" x="128.80000000000001" y="-1212.1439280359821"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qlZ-jg-kSC">
@@ -45,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="-855" y="-546"/>
         </scene>
-        <!--Item-->
+        <!--Scores-->
         <scene sceneID="vrG-mw-LLC">
             <objects>
                 <tableViewController id="tXF-Ee-GUW" customClass="ScoreTableVC" customModule="snake" customModuleProvider="target" sceneMemberID="viewController">
@@ -93,13 +136,13 @@
                             <outlet property="delegate" destination="tXF-Ee-GUW" id="IHs-Q6-aK7"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="vtO-du-FjK"/>
+                    <tabBarItem key="tabBarItem" title="Scores" id="vtO-du-FjK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddr-ow-k2C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="127" y="-552"/>
         </scene>
-        <!--Item-->
+        <!--Snake-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="snake" customModuleProvider="target" sceneMemberID="viewController">
@@ -109,7 +152,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="KPz-z0-Wap"/>
+                    <tabBarItem key="tabBarItem" title="Snake" id="KPz-z0-Wap"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>

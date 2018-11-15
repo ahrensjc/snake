@@ -101,6 +101,7 @@ class GameSceneManager{
                 self.scene.snakePositions.remove(at: 0)
             }
             else{
+                self.scene.gameScore += 1
                 self.scene.foodExists = false
             }
             
@@ -124,13 +125,12 @@ class GameSceneManager{
         }
     }
     
-    func died() -> Bool{
+    func died(){
         for i in 0..<self.scene.snakePositions.count - 1 {
             if self.scene.snakePositions[i].x == headPosX && self.scene.snakePositions[i].y == headPosY {
-                return true
+                self.scene.dead = true
             }
         }
-        return false
     }
     
     func foodAtHead() -> Bool{

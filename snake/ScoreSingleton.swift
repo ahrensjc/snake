@@ -16,7 +16,7 @@ class ScoreSingleton : NSObject {
     let scoreUrl : URL
     static let sharedInstance = ScoreSingleton()
     
-    private override init() {
+    override init() {
         scores = [String : Int]()
         names = [String : String]()
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
