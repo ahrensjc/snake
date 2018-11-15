@@ -18,39 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="- Use tilt of device to control direction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85m-xa-D1L">
-                                <rect key="frame" x="16" y="64" width="411" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALa-dz-dc0">
                                 <rect key="frame" x="16" y="46" width="122" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="122" id="FU4-bF-LTy"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="- If the snake collides with itself, you lose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7y-aI-QrZ">
-                                <rect key="frame" x="16" y="117" width="313" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="- Scores are recorded and saved on the Scores tab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EfH-pk-0TX">
-                                <rect key="frame" x="16" y="190" width="389" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="- Try to acquire as many points as possible by hitting the green segments in-game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vm1-HD-aoa">
-                                <rect key="frame" x="16" y="154" width="627" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrd-Y3-sXz">
+                                <rect key="frame" x="16" y="83" width="343" height="103"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="343" id="0L7-9W-N8S"/>
+                                    <constraint firstAttribute="height" constant="103" id="LsF-3j-1kc"/>
+                                </constraints>
+                                <string key="text">- Use tilt of device to control snake direction - If the snake collides with itself, you will lose - Collect as many points as you can.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -58,8 +38,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ALa-dz-dc0" firstAttribute="top" secondItem="fLk-Iz-vgw" secondAttribute="top" constant="26" id="SEK-fb-xZA"/>
-                            <constraint firstItem="ALa-dz-dc0" firstAttribute="leading" secondItem="fLk-Iz-vgw" secondAttribute="leading" constant="16" id="bOE-hg-qUq"/>
+                            <constraint firstItem="Mrd-Y3-sXz" firstAttribute="top" secondItem="ALa-dz-dc0" secondAttribute="bottom" constant="8" id="EDN-q0-9Cz"/>
+                            <constraint firstItem="fLk-Iz-vgw" firstAttribute="trailing" secondItem="Mrd-Y3-sXz" secondAttribute="trailing" constant="16" id="GS7-Tc-5w2"/>
+                            <constraint firstItem="Mrd-Y3-sXz" firstAttribute="leading" secondItem="fLk-Iz-vgw" secondAttribute="leading" constant="16" id="REr-9l-kdP"/>
+                            <constraint firstItem="ALa-dz-dc0" firstAttribute="top" secondItem="fLk-Iz-vgw" secondAttribute="top" constant="26" id="WDu-WJ-YYM"/>
+                            <constraint firstItem="fLk-Iz-vgw" firstAttribute="trailing" secondItem="ALa-dz-dc0" secondAttribute="trailing" constant="237" id="cqd-qU-oq3"/>
+                            <constraint firstItem="Mrd-Y3-sXz" firstAttribute="top" secondItem="ALa-dz-dc0" secondAttribute="bottom" constant="8" id="iBh-VM-U5B"/>
+                            <constraint firstItem="ALa-dz-dc0" firstAttribute="leading" secondItem="fLk-Iz-vgw" secondAttribute="leading" constant="16" id="qFy-Yd-ipJ"/>
+                            <constraint firstItem="Mrd-Y3-sXz" firstAttribute="top" secondItem="ALa-dz-dc0" secondAttribute="bottom" constant="8" id="y6I-Wc-sGI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fLk-Iz-vgw"/>
                     </view>
