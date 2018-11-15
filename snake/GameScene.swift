@@ -8,7 +8,6 @@
 import SpriteKit
 import GameplayKit
 
-
 class SnakePosition{
     var x: Int = 0
     var y: Int = 0
@@ -37,8 +36,8 @@ class GameScene: SKScene {
     var boardArr: [[BoardCell]] = [[BoardCell]]()
     var gameArea: SKShapeNode!
     
-    var numRows: Int = 65
-    var numCols: Int = 45
+    var numRows: Int = 20
+    var numCols: Int = 30
     var cellSize: CGFloat = 25.0
     
     var foodExists: Bool = false
@@ -59,6 +58,10 @@ class GameScene: SKScene {
         if !foodExists {
             game.generateFood()
         }
+        
+        if game.died(){
+            snakePositions.remove(at: 0)
+        }
     }
     
     func fillBoard(){
@@ -67,7 +70,7 @@ class GameScene: SKScene {
             for _ in 0 ..< numCols{
                 row.append( BoardCell() )
             }
-            boardArr.append(row)
+            boardArr.append( row )
         }
     }
     
@@ -76,14 +79,14 @@ class GameScene: SKScene {
         let width = frame.size.width
         let height = frame.size.height
         
-        let gameShape = CGRect(x: -width/2, y:-height/2, width: width, height: height)
+        let gameShape = CGRect(x: 0, y: 0, width: width, height: height)
         
         gameArea = SKShapeNode(rect: gameShape, cornerRadius: 0.5)
         gameArea.fillColor = SKColor.black
         gameArea.zPosition = 1
         gameArea.isHidden = false
         self.addChild(gameArea)
-        createGridLines(width: width, height: height - 180)
+        createGridLines(width: width, height: height - 200)
         
         self.game.initGame()
         
@@ -96,17 +99,17 @@ class GameScene: SKScene {
         let c = numCols
         
         var x = CGFloat(width / -2) + (w / 2)
-        var y = CGFloat(height / 2) - (w / 2)
+        var y = CGFloat(height) - (w / 2)
         
         for i in 0..<r - 1{
             
             for j in 0..<c - 1{
+                
                 let cell = SKShapeNode(rectOf: CGSize(width: w, height: w))
                 cell.strokeColor = SKColor.white
                 cell.fillColor = SKColor.darkGray
                 cell.zPosition = 1.0
                 cell.position = CGPoint(x: x, y: y)
-                print("\(i) - \(j)")
                 
                 boardArr[i][j].node = cell
                 boardArr[i][j].x = x

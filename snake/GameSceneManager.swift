@@ -17,12 +17,12 @@ class GameSceneManager{
     
     var scene: GameScene
     var motionManager = CMMotionManager()
-    let updateInterval = 0.5
+    let updateInterval = 0.75
     var nextUpdateTime = 0.0
-    var direction = directions.left
+    var direction = directions.down
     
-    var headPosX = 10 // initial position of snake
-    var headPosY = 11
+    var headPosX = 10  // initial position of snake
+    var headPosY = 10
     
     init(game: GameScene){
         self.scene = game
@@ -54,10 +54,8 @@ class GameSceneManager{
         if timePassed >= nextUpdateTime {
             nextUpdateTime = timePassed + updateInterval
             
-            
             let motionDataX = motionManager.accelerometerData?.acceleration.x
             let motionDataY = motionManager.accelerometerData?.acceleration.y
-            
             
             if abs(motionDataX ?? 0) > abs(motionDataY ?? 0) {
                 if motionDataX ?? 0 >= 0 {
@@ -76,16 +74,12 @@ class GameSceneManager{
             
             adjustDirection()
             
-            
-            let snakePos = self.scene.snakePositions
-            
-            self.scene.boardArr[snakePos[0].x][snakePos[0].y].node.fillColor = SKColor.red
-            
             // append next position to head
             self.scene.snakePositions.append(SnakePosition(x: headPosX, y: headPosY))
             
             // remove tail if it hasn't collided with food
             if !foodAtHead(){
+                self.scene.boardArr[self.scene.snakePositions[0].x][self.scene.snakePositions[0].y].node.fillColor = SKColor.darkGray
                 self.scene.snakePositions.remove(at: 0)
             }
             
@@ -109,27 +103,18 @@ class GameSceneManager{
     func died() -> Bool{
         
         var dead: Bool = false
-        
-        var pos = scene.snakePositions
-        let head = pos[0]
-        pos.remove(at: 0) // don't check if head collides with head
-        
         // if it collided with itself
-        pos.forEach{ if $0.x == head.x && $0.y == head.y { dead = true } }
+        self.scene.snakePositions.forEach{ if $0.x == headPosX && $0.y == headPosY { dead = true } }
         
         // if it went off screen
-        if (head.x > scene.numRows || head.x < 0) || (head.y > scene.numCols || head.y < 0) {
-            dead = true
-        }
+        if (headPosX > scene.numRows || headPosX < 0) || (headPosY > scene.numCols || headPosY < 0) { dead = true }
         
         return dead
     }
     
     func foodAtHead() -> Bool{
-        var pos = scene.snakePositions
-        let head = pos[0]
-        
-        if scene.boardArr[head.x][head.y].isFood {
+        print("(\(headPosX)) - (\(headPosY))")
+        if scene.boardArr[headPosX][headPosY].isFood {
             return true
         }
         else{
