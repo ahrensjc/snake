@@ -21,17 +21,35 @@ class GameSceneManager{
     var nextUpdateTime = 0.0
     var direction = directions.down
     
-    var headPosX = 10  // initial position of snake
-    var headPosY = 10
+    var headPosX = 10{
+        didSet{
+            if headPosX < 0 {
+                headPosX = self.scene.numRows-1
+            }
+            if headPosX > self.scene.numRows-1 {
+                headPosX = 0
+            }
+        }
+    }
+    var headPosY = 10 {
+        didSet{
+            if headPosY < 0 {
+                headPosY = self.scene.numCols-1
+            }
+            if headPosY > self.scene.numCols-1 {
+                headPosY = 0
+            }
+        }
+    }
     
     init(game: GameScene){
         self.scene = game
     }
     
     func initGame() {
-        self.scene.snakePositions.append(SnakePosition(x: 10, y: 10))
-        self.scene.snakePositions.append(SnakePosition(x: 10, y: 11))
         self.scene.snakePositions.append(SnakePosition(x: 10, y: 12))
+        self.scene.snakePositions.append(SnakePosition(x: 10, y: 11))
+        self.scene.snakePositions.append(SnakePosition(x: 10, y: 10))
         
         motionManager.accelerometerUpdateInterval = 0.1
         motionManager.startAccelerometerUpdates()
@@ -41,13 +59,13 @@ class GameSceneManager{
     
     
     func generateFood(){
+        
         let fx = Int.random(in: 5...scene.numRows - 5)
         let fy = Int.random(in: 5...scene.numCols - 5)
         
         self.scene.boardArr[fx][fy].node.fillColor = SKColor.green
         self.scene.boardArr[fx][fy].isFood = true
-        
-        scene.foodExists = true
+        self.scene.foodExists = true
     }
     
     func updateBoard(timePassed: Double) {
@@ -82,38 +100,40 @@ class GameSceneManager{
                 self.scene.boardArr[self.scene.snakePositions[0].x][self.scene.snakePositions[0].y].node.fillColor = SKColor.darkGray
                 self.scene.snakePositions.remove(at: 0)
             }
+            else{
+                self.scene.foodExists = false
+            }
             
-            // color position of snake
-            self.scene.snakePositions.forEach{ self.scene.boardArr[$0.x][$0.y].node.fillColor = SKColor.red }
+            // color snake
+            for part in self.scene.snakePositions {
+                self.scene.boardArr[part.x][part.y].node.fillColor = SKColor.red
+            }
         }
     }
+    
     func adjustDirection(){
         switch direction {
         case .up:
-            headPosY -= 1
-        case .down:
-            headPosY += 1
-        case .left:
-            headPosX -= 1
-        case .right:
             headPosX += 1
+        case .down:
+            headPosX -= 1
+        case .left:
+            headPosY -= 1
+        case .right:
+            headPosY += 1
         }
     }
     
     func died() -> Bool{
-        
-        var dead: Bool = false
-        // if it collided with itself
-        self.scene.snakePositions.forEach{ if $0.x == headPosX && $0.y == headPosY { dead = true } }
-        
-        // if it went off screen
-        if (headPosX > scene.numRows || headPosX < 0) || (headPosY > scene.numCols || headPosY < 0) { dead = true }
-        
-        return dead
+        for i in 0..<self.scene.snakePositions.count - 1 {
+            if self.scene.snakePositions[i].x == headPosX && self.scene.snakePositions[i].y == headPosY {
+                return true
+            }
+        }
+        return false
     }
     
     func foodAtHead() -> Bool{
-        print("(\(headPosX)) - (\(headPosY))")
         if scene.boardArr[headPosX][headPosY].isFood {
             return true
         }

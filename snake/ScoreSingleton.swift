@@ -10,6 +10,7 @@ import Foundation
 
 class ScoreSingleton : NSObject {
     
+    var currentScore: Int = 0
     var scores : [String : Int]
     let fileUrl : URL
     static let sharedInstance = ScoreSingleton()
