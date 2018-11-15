@@ -90,6 +90,10 @@ class ScoreTableVC: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "High Scores"
+    }
 
     /*
     // Override to support conditional editing of the table view.
