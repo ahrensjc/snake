@@ -27,8 +27,8 @@ class ScoreSingleton : NSObject {
         let dirUrl2 = URL(fileURLWithPath: dirPath2)
         scoreUrl = dirUrl2.appendingPathComponent("names.txt")
         
-        names["0"] = "Dev"
-        scores["0"] = 1
+        //names["0"] = "Dev"
+        //scores["0"] = 1
         //scores["Dev"] = 999
         //scores.append(["Dev" : 999])
         

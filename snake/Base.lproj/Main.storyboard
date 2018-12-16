@@ -117,7 +117,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4g-Ib-pkP">
-                                            <rect key="frame" x="16" y="11.5" width="42" height="21"/>
+                                            <rect key="frame" x="54" y="11.5" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -128,17 +128,37 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CPP-1e-SOz">
+                                            <rect key="frame" x="0.0" y="-0.5" width="44" height="44.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="ecn-z1-a3s"/>
+                                                <constraint firstAttribute="width" constant="44" id="gia-v3-HNZ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lwJ-CJ-tbG">
+                                            <rect key="frame" x="12" y="12" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="XZN-Qg-KnL"/>
+                                                <constraint firstAttribute="height" constant="20" id="viW-Ou-zCL"/>
+                                            </constraints>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="xxP-Gu-Gfk" firstAttribute="centerY" secondItem="Fn6-sq-QWX" secondAttribute="centerY" id="1ev-hA-Kgg"/>
+                                        <constraint firstItem="lwJ-CJ-tbG" firstAttribute="leading" secondItem="Fn6-sq-QWX" secondAttribute="leading" constant="12" id="DFX-VF-Sws"/>
                                         <constraint firstItem="xxP-Gu-Gfk" firstAttribute="trailing" secondItem="Fn6-sq-QWX" secondAttribute="trailingMargin" id="FJc-kN-vug"/>
-                                        <constraint firstItem="V4g-Ib-pkP" firstAttribute="leading" secondItem="Fn6-sq-QWX" secondAttribute="leadingMargin" id="iAn-uf-xlw"/>
+                                        <constraint firstItem="lwJ-CJ-tbG" firstAttribute="centerY" secondItem="Fn6-sq-QWX" secondAttribute="centerY" id="GWf-tt-P2l"/>
+                                        <constraint firstItem="V4g-Ib-pkP" firstAttribute="leading" secondItem="CPP-1e-SOz" secondAttribute="trailing" constant="10" id="POh-DL-LNt"/>
+                                        <constraint firstItem="CPP-1e-SOz" firstAttribute="leading" secondItem="Fn6-sq-QWX" secondAttribute="leading" id="aaD-6p-c0p"/>
                                         <constraint firstItem="V4g-Ib-pkP" firstAttribute="centerY" secondItem="Fn6-sq-QWX" secondAttribute="centerY" id="jTl-4z-yDH"/>
                                         <constraint firstItem="xxP-Gu-Gfk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="V4g-Ib-pkP" secondAttribute="trailing" constant="1" id="mqZ-8i-Vj6"/>
+                                        <constraint firstItem="CPP-1e-SOz" firstAttribute="centerY" secondItem="Fn6-sq-QWX" secondAttribute="centerY" id="nEL-fY-Qbf"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="lwJ-CJ-tbG" id="HCk-eD-7md"/>
                                     <outlet property="nameLabel" destination="V4g-Ib-pkP" id="jxa-pv-kwy"/>
+                                    <outlet property="scoreImage" destination="CPP-1e-SOz" id="pZv-TX-2d4"/>
                                     <outlet property="scoreLabel" destination="xxP-Gu-Gfk" id="obX-JO-YEh"/>
                                 </connections>
                             </tableViewCell>
@@ -149,10 +169,13 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Scores" id="vtO-du-FjK"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ARp-iN-Vm9">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddr-ow-k2C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127" y="-552"/>
+            <point key="canvasLocation" x="125.59999999999999" y="-552.77361319340332"/>
         </scene>
         <!--Snake-->
         <scene sceneID="tXr-a1-R10">
