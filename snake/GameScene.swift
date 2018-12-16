@@ -28,6 +28,8 @@ class GameScene: SKScene {
     var dead: Bool = false
     var sentData: Bool = false
     
+    var userName: String = "default"
+    
     var singleton: ScoreSingleton?
     
     override func didMove(to view: SKView) {
@@ -53,8 +55,7 @@ class GameScene: SKScene {
             }
             
             if !sentData {
-                singleton?.addScore(name: "Billy", score: gameScore)
-                sentData = true
+                game.presentHighScoreAlert(name: userName, score: gameScore)
             }
             
         }

@@ -9,7 +9,7 @@ import SpriteKit
 import CoreMotion
 import Foundation
 
-class GameSceneManager{
+class GameSceneManager {
     
     enum directions {
         case up, down, left, right
@@ -17,7 +17,7 @@ class GameSceneManager{
     
     var scene: GameScene
     var motionManager = CMMotionManager()
-    let updateInterval = 0.75
+    var updateInterval = 0.75
     var nextUpdateTime = 0.0
     var direction = directions.down
     
@@ -103,6 +103,7 @@ class GameSceneManager{
             else{
                 self.scene.gameScore += 1
                 self.scene.foodExists = false
+                updateInterval = updateInterval * 0.90
             }
             
             // color snake
@@ -131,6 +132,8 @@ class GameSceneManager{
                 self.scene.dead = true
             }
         }
+        
+        
     }
     
     func foodAtHead() -> Bool{
@@ -144,11 +147,48 @@ class GameSceneManager{
     
     func resetGame(){
         self.scene.snakePositions.removeAll()
+        self.scene.gameScore = 0
+        updateInterval = 0.75
+        self.scene.dead = false
         
+        self.scene.snakePositions.append(SnakePosition(x: 10, y: 12))
+        self.scene.snakePositions.append(SnakePosition(x: 10, y: 11))
+        self.scene.snakePositions.append(SnakePosition(x: 10, y: 10))
+        headPosX = 10
+        headPosY = 10
     }
     
-    func presentHighScoreAlert(){
+    func presentHighScoreAlert(name: String, score: Int){
+        self.scene.sentData = true
+        let alertController = UIAlertController(title: "New High Score", message: "Enter your name:", preferredStyle: .alert)
         
+        alertController.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "Name"
+        })
+        
+        let confirmButton = UIAlertAction(title: "Confirm", style: .default, handler: {(_ action: UIAlertAction) -> Void in
+            let input = alertController.textFields?[0].text
+            
+            self.scene.userName = alertController.textFields![0].text!
+            
+            self.scene.singleton?.addScore(name: input ?? "Snake Player", score: self.scene.gameScore)
+            
+            print("Score added for \(String(describing: input))")
+        })
+        
+        alertController.addAction(confirmButton)
+        
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        
+        if let navigationController = rootViewController as? UINavigationController {
+            rootViewController = navigationController.viewControllers.first
+        }
+        
+        if let tabBarController = rootViewController as? UITabBarController {
+            rootViewController = tabBarController.selectedViewController
+        }
+        
+        rootViewController?.present(alertController, animated: true, completion: nil)
     }
 }
 
