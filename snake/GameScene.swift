@@ -26,6 +26,7 @@ class GameScene: SKScene {
     var foodExists: Bool = false
     
     var dead: Bool = false
+    var sentData: Bool = false
     
     var singleton: ScoreSingleton?
     
@@ -50,7 +51,11 @@ class GameScene: SKScene {
             for seg in snakePositions{
                 boardArr[seg.x][seg.y].node.fillColor = SKColor.darkGray
             }
-            singleton?.addScore(name: "Billy", score: gameScore)
+            
+            if !sentData {
+                singleton?.addScore(name: "Billy", score: gameScore)
+                sentData = true
+            }
             
         }
         

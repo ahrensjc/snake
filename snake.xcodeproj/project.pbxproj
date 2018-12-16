@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D056C4E219BC2FA00850CFD /* GameSceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D056C4D219BC2FA00850CFD /* GameSceneManager.swift */; };
+		BE6F5C6B21C6E17E000435AB /* operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6F5C6A21C6E17E000435AB /* operation.swift */; };
 		BE711B40219B9AF5003B00E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE711B3F219B9AF5003B00E9 /* AppDelegate.swift */; };
 		BE711B42219B9AF5003B00E9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE711B41219B9AF5003B00E9 /* GameScene.sks */; };
 		BE711B44219B9AF5003B00E9 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BE711B43219B9AF5003B00E9 /* Actions.sks */; };
@@ -19,10 +20,12 @@
 		BE711B58219BAFA3003B00E9 /* ScoreSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE711B57219BAFA3003B00E9 /* ScoreSingleton.swift */; };
 		BE711B5A219BF4FB003B00E9 /* ScoreTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE711B59219BF4FB003B00E9 /* ScoreTableVC.swift */; };
 		BE711B5C219BF513003B00E9 /* ScoreTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE711B5B219BF513003B00E9 /* ScoreTableCell.swift */; };
+		BEBF309721C6DF3E00EF73FC /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF309621C6DF3E00EF73FC /* InstructionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D056C4D219BC2FA00850CFD /* GameSceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneManager.swift; sourceTree = "<group>"; };
+		BE6F5C6A21C6E17E000435AB /* operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = operation.swift; sourceTree = "<group>"; };
 		BE711B3C219B9AF5003B00E9 /* snake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE711B3F219B9AF5003B00E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE711B41219B9AF5003B00E9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		BE711B57219BAFA3003B00E9 /* ScoreSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreSingleton.swift; sourceTree = "<group>"; };
 		BE711B59219BF4FB003B00E9 /* ScoreTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableVC.swift; sourceTree = "<group>"; };
 		BE711B5B219BF513003B00E9 /* ScoreTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableCell.swift; sourceTree = "<group>"; };
+		BEBF309621C6DF3E00EF73FC /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				BE711B47219B9AF5003B00E9 /* GameViewController.swift */,
 				0D056C4D219BC2FA00850CFD /* GameSceneManager.swift */,
 				BE711B49219B9AF5003B00E9 /* Main.storyboard */,
+				BEBF309621C6DF3E00EF73FC /* InstructionsViewController.swift */,
+				BE6F5C6A21C6E17E000435AB /* operation.swift */,
 				BE711B57219BAFA3003B00E9 /* ScoreSingleton.swift */,
 				BE711B59219BF4FB003B00E9 /* ScoreTableVC.swift */,
 				BE711B5B219BF513003B00E9 /* ScoreTableCell.swift */,
@@ -164,6 +170,8 @@
 				0D056C4E219BC2FA00850CFD /* GameSceneManager.swift in Sources */,
 				BE711B58219BAFA3003B00E9 /* ScoreSingleton.swift in Sources */,
 				BE711B40219B9AF5003B00E9 /* AppDelegate.swift in Sources */,
+				BE6F5C6B21C6E17E000435AB /* operation.swift in Sources */,
+				BEBF309721C6DF3E00EF73FC /* InstructionsViewController.swift in Sources */,
 				BE711B5C219BF513003B00E9 /* ScoreTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,13 +319,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X64QG3P8YP;
+				DEVELOPMENT_TEAM = 439UBVLQJZ;
 				INFOPLIST_FILE = snake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = GCC.snake3;
+				PRODUCT_BUNDLE_IDENTIFIER = GCC.snake1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -329,13 +337,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X64QG3P8YP;
+				DEVELOPMENT_TEAM = 439UBVLQJZ;
 				INFOPLIST_FILE = snake/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = GCC.snake3;
+				PRODUCT_BUNDLE_IDENTIFIER = GCC.snake1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -13,7 +13,7 @@
         <!--Instructions-->
         <scene sceneID="RBh-Ry-6Nw">
             <objects>
-                <viewController id="tk4-Zx-UOM" sceneMemberID="viewController">
+                <viewController id="tk4-Zx-UOM" customClass="InstructionsViewController" customModule="snake" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kld-0p-aCf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,32 +24,58 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrd-Y3-sXz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Use tilt of device to control snake direction" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrd-Y3-sXz">
                                 <rect key="frame" x="16" y="83" width="343" height="103"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="343" id="0L7-9W-N8S"/>
                                     <constraint firstAttribute="height" constant="103" id="LsF-3j-1kc"/>
                                 </constraints>
-                                <string key="text">- Use tilt of device to control snake direction - If the snake collides with itself, you will lose - Collect as many points as you can.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-If the snake collides with itself, you lose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBt-Je-49j">
+                                <rect key="frame" x="16" y="208" width="309" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rsW-cA-EZf">
+                                <rect key="frame" x="10" y="304" width="355" height="158"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rsW-cA-EZf" secondAttribute="height" multiplier="355:158" id="sNm-eH-oBG"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="s4a-8a-nrF">
+                                <rect key="frame" x="177" y="373" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="rsW-cA-EZf" firstAttribute="top" secondItem="tBt-Je-49j" secondAttribute="bottom" constant="75" id="7jM-ej-fgH"/>
+                            <constraint firstItem="fLk-Iz-vgw" firstAttribute="trailing" secondItem="rsW-cA-EZf" secondAttribute="trailing" constant="10" id="Dje-fR-l0E"/>
                             <constraint firstItem="Mrd-Y3-sXz" firstAttribute="top" secondItem="ALa-dz-dc0" secondAttribute="bottom" constant="8" id="EDN-q0-9Cz"/>
                             <constraint firstItem="fLk-Iz-vgw" firstAttribute="trailing" secondItem="Mrd-Y3-sXz" secondAttribute="trailing" constant="16" id="GS7-Tc-5w2"/>
+                            <constraint firstItem="rsW-cA-EZf" firstAttribute="centerX" secondItem="kld-0p-aCf" secondAttribute="centerX" id="H2f-2E-tsi"/>
                             <constraint firstItem="Mrd-Y3-sXz" firstAttribute="leading" secondItem="fLk-Iz-vgw" secondAttribute="leading" constant="16" id="REr-9l-kdP"/>
                             <constraint firstItem="ALa-dz-dc0" firstAttribute="top" secondItem="fLk-Iz-vgw" secondAttribute="top" constant="26" id="WDu-WJ-YYM"/>
+                            <constraint firstItem="rsW-cA-EZf" firstAttribute="leading" secondItem="fLk-Iz-vgw" secondAttribute="leading" constant="10" id="YeS-nU-kcG"/>
+                            <constraint firstItem="fLk-Iz-vgw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tBt-Je-49j" secondAttribute="trailing" constant="1" id="boL-HC-f9T"/>
                             <constraint firstItem="fLk-Iz-vgw" firstAttribute="trailing" secondItem="ALa-dz-dc0" secondAttribute="trailing" constant="237" id="cqd-qU-oq3"/>
+                            <constraint firstItem="tBt-Je-49j" firstAttribute="leading" secondItem="fLk-Iz-vgw" secondAttribute="leading" constant="16" id="eQd-Kj-hit"/>
                             <constraint firstItem="Mrd-Y3-sXz" firstAttribute="top" secondItem="ALa-dz-dc0" secondAttribute="bottom" constant="8" id="iBh-VM-U5B"/>
+                            <constraint firstItem="tBt-Je-49j" firstAttribute="top" secondItem="Mrd-Y3-sXz" secondAttribute="bottom" constant="22" id="kV5-cA-J6j"/>
                             <constraint firstItem="ALa-dz-dc0" firstAttribute="leading" secondItem="fLk-Iz-vgw" secondAttribute="leading" constant="16" id="qFy-Yd-ipJ"/>
                             <constraint firstItem="Mrd-Y3-sXz" firstAttribute="top" secondItem="ALa-dz-dc0" secondAttribute="bottom" constant="8" id="y6I-Wc-sGI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fLk-Iz-vgw"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Instructions" id="aew-iZ-xf5"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="s4a-8a-nrF" id="oSZ-pp-ySC"/>
+                        <outlet property="myImageView" destination="rsW-cA-EZf" id="9UM-DA-04V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w74-e5-Ytc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

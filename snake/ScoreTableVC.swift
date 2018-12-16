@@ -20,7 +20,7 @@ class ScoreTableVC: UITableViewController {
         let s = ScoreSingleton.sharedInstance
         print(s.scores)
         for score in s.scores {
-            currentScores.append((score.key, score.value))
+            currentScores.append((s.names[String(score.key)] ?? "Dev", score.value))
         }
         //currentScores = s.scores
         
@@ -89,6 +89,10 @@ class ScoreTableVC: UITableViewController {
         cell.scoreLabel.text = String(currentScores[indexPath.item].1)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "High Scores"
     }
 
     /*
