@@ -141,5 +141,14 @@ class GameSceneManager{
             return false
         }
     }
+    
+    func resetGame(){
+        self.scene.snakePositions.removeAll()
+        
+    }
+    
+    func presentHighScoreAlert(){
+        
+    }
 }
 
