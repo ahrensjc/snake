@@ -21,7 +21,16 @@ class ScoreTableVC: UITableViewController {
     
     
     @objc func refresh(_ sender: Any) {
-        //  your code to refresh tableView
+        let s = ScoreSingleton.sharedInstance
+        //print(s.scores)
+        currentScores = [(name: String, score: Int)]()
+        for score in s.scores {
+            currentScores.append((s.names[String(score.key)] ?? "Unknown user", score.value))
+        }
+        
+        currentScores.sort(by: { $0.score > $1.score })
+        bestUser = currentScores[0].name
+        
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }
@@ -39,7 +48,7 @@ class ScoreTableVC: UITableViewController {
         //tableView.addSubview(refreshControl) // not required when using UITableViewController
         
         let s = ScoreSingleton.sharedInstance
-        print(s.scores)
+        //print(s.scores)
         for score in s.scores {
             currentScores.append((s.names[String(score.key)] ?? "Unknown user", score.value))
         }

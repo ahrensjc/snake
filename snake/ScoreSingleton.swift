@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 class ScoreSingleton : NSObject {
     
@@ -75,8 +76,38 @@ class ScoreSingleton : NSObject {
     }
     
     func addScore(name : String, score : Int) {
+        
+        var highest = true
+        for oldScore in scores {
+            if score < oldScore.value {
+                highest = false
+            }
+        }
+        if highest {
+            //Send a notification to let you know you beat the high score
+            let center = UNUserNotificationCenter.current()
+            
+            let note = UNMutableNotificationContent()
+            
+            note.title = "New High Score!"
+            note.body = "Congratulations, \(name)! Your score of \(score) is the new high score!"
+            note.sound = UNNotificationSound.default
+            note.categoryIdentifier = "HighScore"
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: "HighScore", content: note, trigger: trigger)
+            
+            center.add(request, withCompletionHandler: {
+                (error) in
+                if error != nil {
+                    print("notification failed")
+                }
+            })
+        }
+        
         scores[String(scores.count)] = score
-        names[String(scores.count)] = name
+        names[String(names.count)] = name
         do {
             // Convert words into JSON data
             let data = try JSONSerialization.data(withJSONObject: scores, options: .prettyPrinted)
@@ -115,6 +146,8 @@ class ScoreSingleton : NSObject {
             print("error adding score")
         }
     }
+    
+    
     
 }
 
