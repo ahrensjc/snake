@@ -38,6 +38,8 @@ class InstructionsViewController: UIViewController {
             
         }
         queue.addOperation(op)
+        let orientation = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(orientation, forKey: "orientation")
     }
     
 

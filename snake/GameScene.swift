@@ -52,6 +52,7 @@ class GameScene: SKScene {
         if dead {
             for seg in snakePositions{
                 boardArr[seg.x][seg.y].node.fillColor = SKColor.darkGray
+                snakePositions.removeAll()
             }
             
             if !sentData {

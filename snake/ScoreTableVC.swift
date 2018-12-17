@@ -29,7 +29,8 @@ class ScoreTableVC: UITableViewController {
         }
         
         currentScores.sort(by: { $0.score > $1.score })
-        bestUser = currentScores[0].name
+        //bestUser = currentScores[0].name
+        bestUser = ""
         
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
@@ -54,7 +55,8 @@ class ScoreTableVC: UITableViewController {
         }
         
         currentScores.sort(by: { $0.score > $1.score })
-        bestUser = currentScores[0].name
+//        bestUser = currentScores[0].name
+        bestUser = ""
         
         let queue = OperationQueue()
         //var urlString : String!

@@ -57,14 +57,28 @@ class GameSceneManager {
         updateBoard(timePassed: 0)
     }
     
+    func isConflict(x: Int, y: Int) -> Bool {
+        for pos in self.scene.snakePositions{
+            if pos.x == x || pos.y == y {
+                return true
+            }
+        }
+        return false
+    }
     
     func generateFood(){
         
-        let fx = Int.random(in: 5...scene.numRows - 5)
-        let fy = Int.random(in: 5...scene.numCols - 5)
         
-        self.scene.boardArr[fx][fy].node.fillColor = SKColor.green
-        self.scene.boardArr[fx][fy].isFood = true
+        var rx = Int.random(in: 5...scene.numRows - 5)
+        var ry = Int.random(in: 5...scene.numCols - 5)
+
+        while isConflict(x: rx, y: ry) {
+            rx = Int.random(in: 5...scene.numRows - 5)
+            ry = Int.random(in: 5...scene.numCols - 5)
+        }
+        
+        self.scene.boardArr[rx][ry].node.fillColor = SKColor.green
+        self.scene.boardArr[rx][ry].isFood = true
         self.scene.foodExists = true
     }
     
@@ -169,11 +183,11 @@ class GameSceneManager {
         let confirmButton = UIAlertAction(title: "Confirm", style: .default, handler: {(_ action: UIAlertAction) -> Void in
             let input = alertController.textFields?[0].text
             
-            self.scene.userName = alertController.textFields![0].text!
+            self.scene.userName = (input == nil) ? "Snake Player" : input!
             
-            self.scene.singleton?.addScore(name: input ?? "Snake Player", score: self.scene.gameScore)
+            self.scene.singleton?.addScore(name: self.scene.userName, score: self.scene.gameScore)
             
-            print("Score added for \(String(describing: input))")
+            print("Score added for \(String(describing: self.scene.userName))")
         })
         
         alertController.addAction(confirmButton)
