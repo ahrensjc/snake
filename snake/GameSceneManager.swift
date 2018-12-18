@@ -17,7 +17,7 @@ class GameSceneManager {
     
     var scene: GameScene
     var motionManager = CMMotionManager()
-    var updateInterval = 0.75
+    var updateInterval = 0.6
     var nextUpdateTime = 0.0
     var direction = directions.down
     
@@ -59,7 +59,7 @@ class GameSceneManager {
     }
     
     func isConflict(x: Int, y: Int) -> Bool {
-        for pos in self.scene.snakePositions{
+        for pos in self.scene.snakePositions {
             if pos.x == x || pos.y == y {
                 return true
             }
@@ -67,16 +67,31 @@ class GameSceneManager {
         return false
     }
     
+    func increaseSpeed(){
+        if updateInterval >= 0.30 {
+            updateInterval = updateInterval * 0.95
+        }
+        else {
+            updateInterval = 0.30
+        }
+    }
+    
     func generateFood(){
         
-        var rx = Int.random(in: 5...scene.numRows - 5)
-        var ry = Int.random(in: 5...scene.numCols - 5)
+        var rx = Int.random(in: 7...scene.numRows - 7)
+        var ry = Int.random(in: 7...scene.numCols - 7)
 
-        while isConflict(x: rx, y: ry) {
-            rx = Int.random(in: 5...scene.numRows - 5)
-            ry = Int.random(in: 5...scene.numCols - 5)
-        }
         
+        if isConflict(x: rx, y: ry){
+            rx += 3
+            ry -= 3
+        }
+
+        
+
+
+ 
+ 
         self.scene.boardArr[rx][ry].node.fillColor = SKColor.init(red: 0, green: 0.65, blue: 0, alpha: 1)
             //SKColor.green
         self.scene.boardArr[rx][ry].isFood = true
@@ -118,7 +133,8 @@ class GameSceneManager {
             else{
                 self.scene.gameScore += 1
                 self.scene.foodExists = false
-                updateInterval = updateInterval * 0.93
+                
+                increaseSpeed()
             }
             
             // color snake
@@ -154,6 +170,7 @@ class GameSceneManager {
     
     func foodAtHead() -> Bool{
         if scene.boardArr[headPosX][headPosY].isFood {
+            scene.boardArr[headPosX][headPosY].isFood = false
             return true
         }
         else{

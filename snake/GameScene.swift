@@ -108,12 +108,16 @@ class GameScene: SKScene {
     func reset(){
         dead = false
         started = false
+        sentData = false
         snakePositions.removeAll()
         
         for i in 0 ..< (numRows) {
             for j in 0 ..< (numCols) {
-                if !boardArr[i][j].isFood {
-                    boardArr[i][j].node.fillColor = SKColor.darkGray
+                
+                boardArr[i][j].node.fillColor = SKColor.darkGray
+                if boardArr[i][j].isFood {
+                    boardArr[i][j].isFood = false
+                    foodExists = false
                 }
             }
         }
@@ -133,6 +137,9 @@ class GameScene: SKScene {
     
     func start(){
         started = true
+        if !foodExists {
+            game.generateFood()
+        }
     }
     
     func initializeGame(){
