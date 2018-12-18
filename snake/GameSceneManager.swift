@@ -77,7 +77,8 @@ class GameSceneManager {
             ry = Int.random(in: 5...scene.numCols - 5)
         }
         
-        self.scene.boardArr[rx][ry].node.fillColor = SKColor.green
+        self.scene.boardArr[rx][ry].node.fillColor = SKColor.init(red: 0, green: 0.65, blue: 0, alpha: 1)
+            //SKColor.green
         self.scene.boardArr[rx][ry].isFood = true
         self.scene.foodExists = true
     }
@@ -124,6 +125,9 @@ class GameSceneManager {
             for part in self.scene.snakePositions {
                 self.scene.boardArr[part.x][part.y].node.fillColor = SKColor.red
             }
+            self.scene.boardArr[headPosX][headPosY].node.fillColor = SKColor.init(red: 0.65, green: 0, blue: 0, alpha: 1)
+                //SKColor.init(displayP3Red: 0.5, green: 0, blue: 0, alpha: 1)
+                //SKColor.init(cgColor: UIColor(red: 0.5, green: 0, blue: 0, alpha: 1)))
         }
     }
     
