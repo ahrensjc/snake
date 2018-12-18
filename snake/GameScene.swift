@@ -10,12 +10,17 @@ import GameplayKit
 
 
 
+
 class GameScene: SKScene {
     
     var game: GameSceneManager!
     var snakePositions: [SnakePosition] = []
     var boardArr: [[BoardCell]] = [[BoardCell]]()
     var gameArea: SKShapeNode!
+    
+    lazy var startBtn = self.childNode(withName: "start") as! SKLabelNode
+    lazy var resetBtn = self.childNode(withName: "reset") as! SKLabelNode
+    lazy var scoreLabel = self.childNode(withName: "score") as! SKLabelNode
     
     var gameScore: Int = 0
     
@@ -27,6 +32,7 @@ class GameScene: SKScene {
     
     var dead: Bool = false
     var sentData: Bool = false
+    var started: Bool = false
     
     var userName: String = "default"
     
@@ -45,24 +51,29 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
-        game.updateBoard(timePassed: currentTime)
+        if started {
         
-        game.died()
-        
-        if dead {
-            for seg in snakePositions{
-                boardArr[seg.x][seg.y].node.fillColor = SKColor.darkGray
-                snakePositions.removeAll()
+            game.updateBoard(timePassed: currentTime)
+            
+            game.died()
+            
+            scoreLabel.text = "Score: \(gameScore)"
+            
+            if dead {
+                for seg in snakePositions{
+                    
+                    boardArr[seg.x][seg.y].node.fillColor = SKColor.darkGray
+                }
+                
+                if !sentData {
+                    game.presentHighScoreAlert(name: userName, score: gameScore)
+                }
+                
             }
             
-            if !sentData {
-                game.presentHighScoreAlert(name: userName, score: gameScore)
+            if !foodExists {
+                game.generateFood()
             }
-            
-        }
-        
-        if !foodExists {
-            game.generateFood()
         }
         
     }
@@ -75,6 +86,53 @@ class GameScene: SKScene {
             }
             boardArr.append( row )
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first
+        let positionInScene = touch!.location(in: self)
+        let touchedNode = self.atPoint(positionInScene)
+        
+        if let name = touchedNode.name {
+            if name == "start" && !started {
+                start()
+            }
+            
+            if name == "reset"{
+                reset()
+            }
+        }
+    }
+    
+    func reset(){
+        dead = false
+        started = false
+        snakePositions.removeAll()
+        
+        for i in 0 ..< (numRows) {
+            for j in 0 ..< (numCols) {
+                if !boardArr[i][j].isFood {
+                    boardArr[i][j].node.fillColor = SKColor.darkGray
+                }
+            }
+        }
+        
+        gameScore = 0
+        self.game.updateInterval = 0.75
+
+        
+        
+        snakePositions.append(SnakePosition(x: 10, y: 12))
+        snakePositions.append(SnakePosition(x: 10, y: 11))
+        snakePositions.append(SnakePosition(x: 10, y: 10))
+        self.game.headPosX = 10
+        self.game.headPosY = 10
+ 
+    }
+    
+    func start(){
+        started = true
     }
     
     func initializeGame(){

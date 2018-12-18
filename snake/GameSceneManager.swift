@@ -31,6 +31,7 @@ class GameSceneManager {
             }
         }
     }
+    
     var headPosY = 10 {
         didSet{
             if headPosY < 0 {
@@ -68,7 +69,6 @@ class GameSceneManager {
     
     func generateFood(){
         
-        
         var rx = Int.random(in: 5...scene.numRows - 5)
         var ry = Int.random(in: 5...scene.numCols - 5)
 
@@ -90,17 +90,17 @@ class GameSceneManager {
             let motionDataY = motionManager.accelerometerData?.acceleration.y
             
             if abs(motionDataX ?? 0) > abs(motionDataY ?? 0) {
-                if motionDataX ?? 0 >= 0 {
+                if motionDataX ?? 0 >= 0 && direction != directions.down{
                     direction = directions.up
                 }
-                else {
+                else if direction != directions.up {
                     direction = directions.down
                 }
             }
-            else if motionDataY ?? 0 >= 0 {
+            else if motionDataY ?? 0 >= 0 && direction != directions.right{
                 direction = directions.left
             }
-            else {
+            else if direction != directions.left {
                 direction = directions.right
             }
             
@@ -117,7 +117,7 @@ class GameSceneManager {
             else{
                 self.scene.gameScore += 1
                 self.scene.foodExists = false
-                updateInterval = updateInterval * 0.90
+                updateInterval = updateInterval * 0.93
             }
             
             // color snake
@@ -146,8 +146,6 @@ class GameSceneManager {
                 self.scene.dead = true
             }
         }
-        
-        
     }
     
     func foodAtHead() -> Bool{
@@ -157,19 +155,6 @@ class GameSceneManager {
         else{
             return false
         }
-    }
-    
-    func resetGame(){
-        self.scene.snakePositions.removeAll()
-        self.scene.gameScore = 0
-        updateInterval = 0.75
-        self.scene.dead = false
-        
-        self.scene.snakePositions.append(SnakePosition(x: 10, y: 12))
-        self.scene.snakePositions.append(SnakePosition(x: 10, y: 11))
-        self.scene.snakePositions.append(SnakePosition(x: 10, y: 10))
-        headPosX = 10
-        headPosY = 10
     }
     
     func presentHighScoreAlert(name: String, score: Int){
@@ -205,4 +190,3 @@ class GameSceneManager {
         rootViewController?.present(alertController, animated: true, completion: nil)
     }
 }
-
